@@ -23,17 +23,17 @@ class Fudge(Dice):
 	def __init__(self):
 		self._number = 4
 		self._sides = [-1, -1, 0, 0, 1, 1]
-		self.__probability__ = {
-			4 : 1/81,
-			3 : 4/81,
-			2 : 10/81,
-			1 : 16/81,
-			0 : 19/81,
-			-1 : 16/81,
-			-2 : 10/81,
-			-3 : 4/81,
-			-4 : 1/81
-		}
+#		self.__probability__ = {
+#			4 : 1/81,
+#			3 : 4/81,
+#			2 : 10/81,
+#			1 : 16/81,
+#			0 : 19/81,
+#			-1 : 16/81,
+#			-2 : 10/81,
+#			-3 : 4/81,
+#			-4 : 1/81
+#		}
 
 	def Multiplier(self, equipment, total_from_dice):
 		'''Calculate total damage based on the player's weapon times a multiplier dictated by 4dF'''
@@ -51,14 +51,14 @@ class d6(Dice):
 	def __init__(self):
 		self._number = 1
 		self._sides = [1, 2, 3, 4, 5, 6]
-		self.__probability__ = {
-			1 : (1/6), 
-			2 : (1/6), 
-			3 : (1/6), 
-			4 : (1/6), 
-			5 : (1/6), 
-			6 : (1/6)
-		}
+#		self.__probability__ = {
+#			1 : (1/6), 
+#			2 : (1/6), 
+#			3 : (1/6), 
+#			4 : (1/6), 
+#			5 : (1/6), 
+#			6 : (1/6)
+#		}
 
 	def Distribution(self, distribution_value, damage):
 		'''Calculate where the damage goes based on the aim of 1d6'''
@@ -67,8 +67,6 @@ class d6(Dice):
 		return int(damage_to_target), int(damage_to_body)
 			#if distribution = 6:
 			#	take another attack
-
-
 
 if __name__ == "__main__":
 	def Main():
