@@ -11,6 +11,7 @@ class Dice(object):
 		return random.choice(self._sides)
 
 	def RollAllDice(self):
+		''' Standard dice roll'''
 		total_from_dice = 0
 
 		for i in range(self._number):			
@@ -35,6 +36,7 @@ class Fudge(Dice):
 		}
 
 	def Multiplier(self, equipment, total_from_dice):
+		'''Calculate total damage based on the player's weapon times a multiplier dictated by 4dF'''
 		multiplier = math.sin(total_from_dice / 3) + 1
 		if total_from_dice == 4:
 			return equipment * 3
@@ -56,39 +58,29 @@ class d6(Dice):
 			4 : (1/6), 
 			5 : (1/6), 
 			6 : (1/6)
-		} # there's got to ge a better way using range or a for loop or something
+		}
 
-	def Distribution(self, distribution, damage):
-		damage_to_target = damage * (distribution / 6)
-		damage_to_body = damage - (damage_to_target)
-		return damage_to_target, damage_to_body
+	def Distribution(self, distribution_value, damage):
+		'''Calculate where the damage goes based on the aim of 1d6'''
+		damage_to_target = damage * ((distribution_value - 1) / 5)
+		damage_to_body = damage - damage_to_target
+		return int(damage_to_target), int(damage_to_body)
 			#if distribution = 6:
 			#	take another attack
 
-def Attack(equipment, fudge_dice, d6_die):
-	return d6.Distribution(d6_die, Fudge.Multiplier(equipment, fudge_dice))
+
 
 if __name__ == "__main__":
 	def Main():
-		Fudge_dice = Fudge()
-		d6_die = d6()
-		sword = 10
-
-		#print(d6_die.RollDie())
-		#print(Fudge_dice.RollDie())
-		#print(d6_die.RollAllDice())
-		#print(Fudge_dice.RollAllDice())
+		sword = 100
 
 		# to test damage multiplier
 		for i in range(4, -5, -1): 
-			print("damage is: ", Fudge_dice.Multiplier(sword, i))
+			print("damage is: ", Fudge().Multiplier(sword, i))
 
 		# to test damage distribution
 		for i in range(1, 7): 
-			damage_to_target, damage_to_body = d6_die.Distribution(i, sword)
+			damage_to_target, damage_to_body = d6().Distribution(i, sword)
 			print("damage to target is:", damage_to_target, "\n damage to body is:", damage_to_body)
-
-		print(Attack(sword, Fudge_dice.RollAllDice(), d6_die.RollAllDice()))
-
 
 	Main()
