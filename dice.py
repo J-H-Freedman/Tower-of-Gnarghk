@@ -3,9 +3,9 @@ import math
 
 class Dice(object):
 	def __init__(self, number, sides, probability):
-		self._number = number
-		self._sides = sides
-		self._probability = probability
+		self.number = number
+		self.sides = sides
+#		self.probability = probability
 
 	def RollDie(self):
 		return random.choice(self._sides)
@@ -21,8 +21,8 @@ class Dice(object):
 
 class Fudge(Dice):
 	def __init__(self):
-		self._number = 4
-		self._sides = [-1, -1, 0, 0, 1, 1]
+		self.number = 4
+		self.sides = [-1, -1, 0, 0, 1, 1]
 #		self.__probability__ = {
 #			4 : 1/81,
 #			3 : 4/81,
@@ -49,8 +49,8 @@ class Fudge(Dice):
 
 class d6(Dice):
 	def __init__(self):
-		self._number = 1
-		self._sides = [1, 2, 3, 4, 5, 6]
+		self.number = 1
+		self.sides = [1, 2, 3, 4, 5, 6]
 #		self.__probability__ = {
 #			1 : (1/6), 
 #			2 : (1/6), 
